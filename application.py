@@ -16,7 +16,7 @@ st.set_page_config(
     layout="centered",
 )
 st.image(BANNER, use_container_width=True)   # 배너설정
-st.title("나만의 경제 전문가 고고비와 대화하기")
+st.title("나만의 경제 전문가 고비와 대화하기")
 
 # 세션 초기화 (대화 기록, 챗봇, 함수 호출기)
 if "history" not in st.session_state:
@@ -77,15 +77,15 @@ if user_text:   #사용자 입력 들어오면 프로그램 동작 시작
             answer = chatbot.get_last_response()
 
     except Exception as e:
-        # 예외 fallback
         response = chatbot.send_request()
         chatbot.add_response(response)
         chatbot.clean_context()
         answer = chatbot.get_last_response() + f"\n(참고: {e})"
 
-    # ✅ 결과 출력
+    # 결과 출력
     st.session_state.history.append({"role": "developer", "content": answer})
     with st.chat_message("assistant", avatar=AVATAR):
         st.markdown(answer)
+
 
 
